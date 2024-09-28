@@ -16,3 +16,6 @@ amongus=124374920.49890735280900897
 amongus=((amongus/24)**6)-7
 print(amongus)
 
+octopus= " thing with 8 tentacles "
+print(octopus)
+
