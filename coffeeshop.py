@@ -33,10 +33,14 @@ while order!="exit":
 
 
 subtotal= total_price
+after_tax= round( total_price*sales_tax, 2)
 
 
 print("Total Price: $", total_price)
 print("Receipt")
 for item, price in reciept.items():
     print(item,": $", price)
-    print("Subtotal: ", "$", subtotal)
+    
+print("Subtotal: ", "$", subtotal)
+print("Tax: ", str(round((sales_tax-1)*100,2))+"% ")
+print("Total After Tax: ", "$", after_tax)
