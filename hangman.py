@@ -75,7 +75,33 @@ HANGMANPICS = ['''
 =========''']
 
 if level == 1:
-    word= random.choice(words)
+    word= random.choice(words1)
+    blanks= []
+    for i in word:
+        blanks.append("_")
+    errors= 0
+    while "_" in blanks:
+        print("".join(blanks))
+        guess= input("Guess a letter ")
+        if guess in word:
+            for i in range (len (word)):
+                if word [i]==guess:
+                    blanks[i]=guess
+        else:
+            print("Try again ")
+            errors+=1
+        if errors>= len (HANGMANPICS):
+            print("You are a dissapointment to society. Good bye. ")
+            break
+        print(HANGMANPICS[errors])
+    if "_" not in blanks:
+        print("You did it!")
+        print(word)
+        print(errors)
+        level+=1
+        moving=True
+if level==2 and moving==True:
+    word= random.choice(words2)
     blanks= []
     for i in word:
         blanks.append("_")
@@ -101,8 +127,8 @@ if level == 1:
         print(errors)
         level+=1
         moving=True
-if level==2 and moving==True:
-   word= random.choice(words)
+if level==3 and moving==True:
+    word= random.choice(words3)
     blanks= []
     for i in word:
         blanks.append("_")
@@ -126,8 +152,7 @@ if level==2 and moving==True:
         print("You did it!")
         print(word)
         print(errors)
-        level+=1
-        moving=True 
+        print("You beat all the levels! Great job! ")
 
         
 
