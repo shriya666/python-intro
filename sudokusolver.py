@@ -40,6 +40,8 @@ def solve_sudoku(puzzle):
 
 if __name__ == '__main__':
     example_board = [
+        # [ 5, 3, 9, -1, -1, -1, 4, -1, -1],
+
         [3, 9, -1,   -1, 5, -1,   -1, -1, -1],
         [-1, -1, -1,   2, -1, -1,   -1, -1, 5],
         [-1, -1, -1,   7, 1, 9,   -1, 8, -1],
@@ -52,7 +54,9 @@ if __name__ == '__main__':
         [6, 7, -1,   1, -1, 5,   -1, 4, -1],
         [1, -1, 9,   -1, -1, -1,   2, -1, -1]
     ]
+    pprint(example_board)
     print(solve_sudoku(example_board))
     pprint(example_board)
+
 
 
