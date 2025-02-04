@@ -62,3 +62,17 @@ print(Sam)
 #      #      return f"Employee Name: {self.name}, ID: {self.employee_id}, Position: {self.position}, Salary: ${self.salary:.2f}"
    
 # employee1=Employee("Billy Bob", 2345, "Software engineer", 10000)
+
+
+class Gift_repository:
+    def __init__(self, name, cost):
+        self.name= name
+        self.cost= cost
+
+
+    def __str__(self):
+        return f"{self.name, self.cost}"
+
+gifta= Gift_repository("Book", 6)
+print(gifta)
+
