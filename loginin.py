@@ -10,7 +10,12 @@ class User:
         return f"{self.name}-- {self.username}--{self.birthday}"
     
 Users=[]
-
+def isspecial(password):
+    special="!@#$%^&*()?;:<>"
+    for char in special:
+        if char in password:
+            return True
+    return False
 while True:
     option=input("Log in or Sign up? ")
     if option=="Sign up":
@@ -27,11 +32,14 @@ while True:
             for user in Users:
                 if user.username==username:
                     userfound=True 
+        while len(username) < 5:
+            print("Username not long enough. Redo. ")
+            username= input("Username: ")
 
         birthday= input("Birthday mm/dd/yyyy: ")
         
         if date.today().year- int(birthday[6:])<= 11:
-            print("You are too smol for this world. Go back to your safety net. ")
+            print("You are too small for this world. Go back to your safety net. ")
             continue
         emailcheck= False
         email= input("Email: ")
@@ -40,10 +48,16 @@ while True:
                 emailcheck=True 
 
         if emailcheck==True:
-            print("Email address already exists. Stop trying to cheat the system!")
+            print("Email address already exists. Stop trying to cheat the system.")
             continue
 
         password= input("Password: ")
+        
+        while len(password) < 8 or not isspecial(password):
+            print("Password not long enough. Redo. ")
+            print("Your password is not special... make it special with special characters! ")
+            password= input("Password: ")
+
         cpass= input("Confirm Password: ")
         while password != cpass:
             print("Passwords do not match. ")
@@ -59,6 +73,3 @@ while True:
             if user.username== username:
                 if user.password==password:
                     print("You are logged in. Congratulations, you know your username and password. ")
-
-
-
