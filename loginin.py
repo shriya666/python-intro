@@ -35,7 +35,7 @@ while True:
         while len(username) < 5:
             print("Username not long enough. Redo. ")
             username= input("Username: ")
-            Users.append(User(username))
+            
 
         birthday= input("Birthday mm/dd/yyyy: ")
         
@@ -67,13 +67,20 @@ while True:
         Users.append(User(name, username, password, birthday, email))
     else: 
         username= input("Username: ")
-        if username not in Users:
+        userfound=False
+        for user in Users:
+            if user.username==username:
+                userfound=True
+        while userfound==False:
             print("Username not found. Try again. ")
             username= input("Username: ")
-        password= input("Password: ")
+            for user in Users:
+                if user.username==username:
+                    userfound=True
 
-
-        for user in Users:
-            if user.username== username:
-                if user.password==password:
-                    print("You are logged in. Congratulations, you know your username and password. ")
+        else: 
+            password= input("Password: ")
+            for user in Users:
+                if user.username== username:
+                    if user.password==password:
+                        print("You are logged in. Congratulations, you know your username and password. ")
