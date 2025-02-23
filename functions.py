@@ -1,3 +1,4 @@
+import random
 def better_print(str):
     print(str+"!")
 
@@ -58,5 +59,27 @@ def is_palindrome(str):
     return True
 
 print(is_palindrome("racecar"))
+
+
+def in_range():
+    num= random.randint(1,20)
+    print(num)
+    if num>= 1 and num<=10:
+        return True
+    else: 
+        return False
+print(in_range())
+
+def upper_and_lower(str):
+    char1={"uppercharacters": 0, "lowercharacters": 0}
+    for i in str:
+        if i.isupper():
+            char1["uppercharacters"]+=1
+        else:
+            char1["lowercharacters"]+=1
+    return char1
+print(upper_and_lower("Anuya"))
+
+
 
 
