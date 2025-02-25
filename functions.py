@@ -8,7 +8,6 @@ def number_counter(lst):
     sum = 0
     for i in lst:
         sum += i
-
     return sum
 print(number_counter([2, 3, 5]))
 
@@ -38,14 +37,11 @@ print(unique([1,2,2,3]))
 
 def even_numbers(nums):
     newlist1=[]
-    # divisible= nums % 2
     for i in nums:
         if i % 2==0:
             newlist1.append(i)
 
     return newlist1
-        # if divisible== 0:
-        #     return nums
 print(even_numbers([1, 2, 3, 4, 564, 8, 9]))
 
 def is_palindrome(str):
@@ -102,8 +98,21 @@ def is_perfect(nummy):
         return True
     else:
         return False
-    
 print(is_perfect(300))
+
+def square_nums():
+    squares= []
+    for i in range(1, 31):
+        squares.append(i**2)
+    return squares
+print(square_nums())
+
+def squares(num):
+    square= num**2
+    return square
+print(squares(9))
+
+
 
 
 
