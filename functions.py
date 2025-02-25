@@ -64,21 +64,50 @@ print(is_palindrome("racecar"))
 def in_range():
     num= random.randint(1,20)
     print(num)
-    if num>= 1 and num<=10:
+    if num>= 1 and num<=12:
         return True
     else: 
         return False
 print(in_range())
 
 def upper_and_lower(str):
-    char1={"uppercharacters": 0, "lowercharacters": 0}
+    char1=0
+    char2=0
     for i in str:
         if i.isupper():
-            char1["uppercharacters"]+=1
+            char1+=1
         else:
-            char1["lowercharacters"]+=1
-    return char1
+            char2+=1
+    return char1, char2
 print(upper_and_lower("Anuya"))
+
+def is_prime(num):
+    num_root= int(num**0.5)
+    for i in range(2, num_root+1):
+        if num%i == 0:
+            return False
+        else:
+            return True
+print(is_prime(34))
+
+def is_perfect(nummy):
+    divisors=[]
+    for i in range(1, nummy+1):
+        if nummy%i ==0:
+           divisors.append(i)
+    sum=0
+    for i in divisors:
+        sum+=i
+    if sum-nummy==nummy and sum==nummy*2:
+        return True
+    else:
+        return False
+    
+print(is_perfect(300))
+
+
+
+
 
 
 
