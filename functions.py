@@ -1,4 +1,6 @@
+#already done: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 
 import random
+import string
 def better_print(str):
     print(str+"!")
 
@@ -111,6 +113,17 @@ def squares(num):
     square= num**2
     return square
 print(squares(9))
+
+def is_panagram(str):
+    letters= set(string.ascii_lowercase)
+    input_set= set(str.lower())
+    return letters.issubset(input_set)
+
+print(is_panagram("Sphinx of black quartz, judge my vow"))
+
+
+
+
 
 
 
