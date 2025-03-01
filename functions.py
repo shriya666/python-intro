@@ -121,7 +121,24 @@ def is_panagram(str):
 
 print(is_panagram("Sphinx of black quartz, judge my vow"))
 
+def area_circumference(d):
+    r= d/2
+    area= r**2*3.14
+    circ= d*3.14
+    return area, circ 
+print(area_circumference(1))
 
+def reverse_order(str):
+    a= str
+    str1= (a.split(" "))
+    return str1[1], str1[0]
+print(reverse_order("Shriya Rajurkar"))
+
+def reverse_order_again(str):
+    b=str
+    str2= (b.split("-"))
+    return str2[3], str2[2], str2[1], str2[0]
+print(reverse_order_again("green-blue-gold-pink"))
 
 
 
