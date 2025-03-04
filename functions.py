@@ -1,4 +1,4 @@
-#already done: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 
+#already done: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, circlearea, reversefullname
 import random
 import string
 def better_print(str):
@@ -130,24 +130,19 @@ print(area_circumference(1))
 
 def reverse_order(str):
     a= str
-    str1= (a.split(" "))
+    str1= (a.split())
     return str1[1], str1[0]
 print(reverse_order("Shriya Rajurkar"))
 
 def reverse_order_again(str):
-    b=str
-    str2= (b.split("-"))
-    return str2[3], str2[2], str2[1], str2[0]
-print(reverse_order_again("green-blue-gold-pink"))
+    str2= str.split("-")
+    b= str2[ : :-1]
+    return b
+print(reverse_order_again("green-blue-gold-pink-purple-turquoise"))
 
-
-
-
-
-
-
-
-
-
-
-
+def alpha(str):
+    str3= str.split("-")
+    str4=sorted(str3)
+    str5="-".join(str4)
+    return str5
+print(alpha("green-black-blue-white-gray"))
