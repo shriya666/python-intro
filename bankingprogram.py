@@ -1,26 +1,36 @@
 class Account:
-    def __init__(self, name, email, number, balance,  ):
+    def __init__(self, name, email, number, balance  ):
         self.name=name
         self.email= email
         self.number= number
         self.balance= balance
-
-    def deposit(self, ammount):
-        if ammount>0:
-            self.balance+=ammount
-            print("You have deposited money. ")
-        elif ammount<=0:
-            print("Error. Deposit positive values only. ")
-    def withdraw(self, ammount):
-        if ammount>self.balance:
-            print("Error. Ask to high. Try again. ")
-        elif ammount <0:
-            print("Error. Amount is negative. Try wth a positive number ")
-        else:
-            self.balance-=ammount
-            print("Transaction sucessful. You have withdrawn money. ")
-    def see_balance(self):
-        print("Balance: "+self.balance)
+    job= input("What would you like to do? Deposit, Withdraw, or See Balance? ")
+    print(job)
+    if job=="Deposit":
+        amount=input("How much to do you want to deposit? ")
+        def deposit(self, amount):
+            if int(amount)>0:
+                self.balance+=int(amount)
+                print("You have deposited money. ")
+            elif amount<=0:
+                print("Error. Deposit positive values only. ")
+        print(deposit())
+    elif job=="Withdraw":
+        def withdraw(self, amount):
+            if amount>self.balance:
+                print("Error. Ask to high. Try again. ")
+            elif amount <0:
+                print("Error. Amount is negative. Try wth a positive number ")
+            else:
+                self.balance-=amount
+                print("Transaction sucessful. You have withdrawn money. ")
+    elif job=="See Balance":
+        def see_balance():
+            bal=input("what is yur balance ")
+            print("Balance: "+bal)
+        print(see_balance())
+    else:
+        print("Ask not understood. Perhaps you had a typo? ")
 class Bank:
     def __init__(self):
         self.accounts={
