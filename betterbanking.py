@@ -1,22 +1,19 @@
+import random
 class Account:
     def __init__(self, name, email, number, balance  ):
         self.name=name
         self.email= email
         self.number= number
         self.balance= balance
-    job= input("What would you like to do? Deposit, Withdraw, or See Balance? ")
-    print(job)
-    if job=="Deposit":
-        amount=input("How much to do you want to deposit? ")
-        def deposit(self, amount):
+
+    def deposit(self, amount):
             if int(amount)>0:
                 self.balance+=int(amount)
                 print("You have deposited money. ")
             elif amount<=0:
                 print("Error. Deposit positive values only. ")
-        print(deposit(amount))
-    elif job=="Withdraw":
-        def withdraw(self, amount):
+
+    def withdraw(self, amount):
             if amount>self.balance:
                 print("Error. Ask to high. Try again. ")
             elif amount <0:
@@ -24,32 +21,59 @@ class Account:
             else:
                 self.balance-=amount
                 print("Transaction sucessful. You have withdrawn money. ")
-    elif job=="See Balance":
-        def see_balance():
-            bal=input("what is yur balance ")
-            print("Balance: "+bal)
-        print(see_balance())
-    else:
-        print("Ask not understood. Perhaps you had a typo? ")
+
+    def see_balance(self):
+            print("Balance: $"+ str(self.balance()))
+
+    def display_account_details(self):
+         print(self.name, self.balance, self.number, self.balance)
+
 class Bank:
     def __init__(self):
-        self.accounts={
-        }
+        self.accounts={}
     def create_account(self, name, email, number, balance):
-        account=Account(name, email, number, balance)
         if number in self.accounts:
             print("Account already exists ")
         else:
+            account=Account(name, email, number, balance)
             self.accounts[number]=account
-            print("Sucess! You have created an account! Enjoy while we collect intrest off of your misery!")            
+            account.display_account_details()
+            print("Sucess! You have created an account! Enjoy while you collect intrest off of our misery!")            
     def delete_account(self, number):
         if number not in self.accounts:
             print("Account not found. ")
         else:
             del self.accounts[number]
-            print("Account deleted ")
+            print("Account deleted... We're sad to see you go :(((")
     def display_account(self, name, email, number, balance):
         print("Name:"+ self.name +"Email:"+ self.email +"Account number:"+ self.number +"Account balance:"+ self.balance)
     def all_accounts(self):
         for i in self.accounts.values():
             i.display_account()
+    def all_account_nums(self):
+         return list(self.accounts.keys())
+
+
+shriyasbank= Bank()
+
+users= input("Are you a new or returning customer? ")
+if users=="new":
+     print("Creating account. ")
+     name= input("What is your name? ")
+     email=input("Beautiful name. What is your email? ")
+     accountnumber=random.randint(0, 10000)
+     while accountnumber in shriyasbank.all_account_nums():
+          accountnumber=random.randint(0, 10000)
+     balance= 0
+
+     shriyasbank.create_account(name, email, accountnumber, balance)
+     nextaction= input("What do you want to do? Deposit, withdraw, or see balance? ")
+else:
+     nextaction= input("What do you want to do? Deposit, withdraw, or see balance? ")
+if nextaction=="deposit":
+     accountnumber=input("What is your account number?")
+
+
+
+
+
