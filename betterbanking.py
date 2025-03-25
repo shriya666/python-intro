@@ -15,7 +15,7 @@ class Account:
 
     def withdraw(self, amount):
             if amount>self.balance:
-                print("Error. Ask to high. Try again. ")
+                print("Error. Ask too high. Try again. ")
             elif amount <0:
                 print("Error. Amount is negative. Try wth a positive number ")
             else:
@@ -23,7 +23,7 @@ class Account:
                 print("Transaction sucessful. You have withdrawn money. ")
 
     def see_balance(self):
-            print("Balance: $"+ str(self.balance()))
+            print("Balance: $"+ str(self.balance))
 
     def display_account_details(self):
          print(self.name, self.balance, self.number, self.balance)
@@ -47,9 +47,13 @@ class Bank:
             print("Account deleted... We're sad to see you go :(((")
     def display_account(self, name, email, number, balance):
         print("Name:"+ self.name +"Email:"+ self.email +"Account number:"+ self.number +"Account balance:"+ self.balance)
-    def all_accounts(self):
+    def display_all_accounts(self):
         for i in self.accounts.values():
             i.display_account()
+
+    def all_accounts(self):
+         return self.accounts
+    
     def all_account_nums(self):
          return list(self.accounts.keys())
 
@@ -67,11 +71,24 @@ if users=="new":
      balance= 0
 
      shriyasbank.create_account(name, email, accountnumber, balance)
+
      nextaction= input("What do you want to do? Deposit, withdraw, or see balance? ")
 else:
      nextaction= input("What do you want to do? Deposit, withdraw, or see balance? ")
-if nextaction=="deposit":
-     accountnumber=input("What is your account number?")
+
+while True:
+    if nextaction=="Deposit":
+        accountnumber=int(input("What is your account number? "))
+        depositval= float(input("How much do you want to deposit? $"))
+        shriyasbank.all_accounts()[accountnumber].deposit(depositval)
+    elif nextaction=="Withdraw":
+        accountnumber=int(input("What is your account number?"))
+        withdrawval= float(input("How much do you want to withdraw? $"))
+        shriyasbank.all_accounts()[accountnumber].withdraw(withdrawval)
+    else:
+        accountnumber=int(input("What is your account number?"))
+        shriyasbank.all_accounts()[accountnumber].see_balance()
+    nextaction= input("What do you want to do? Deposit, withdraw, or see balance? ")
 
 
 
