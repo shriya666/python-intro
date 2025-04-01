@@ -1,3 +1,5 @@
+import random
+import ast
 class Doctor:
     def __init__(self, name, type, start):
         self.name= name
@@ -27,5 +29,83 @@ Pcp= [George, Susan, Susana]
 
 doctors=[Susan, Susana, Kevin, Kevina, Kyla, Kayla, Kyle, George, Georgina]
 
-name=input("What is your name? ")
-intro= "I am a chatbot. My name is Dr. Princessa, and I am devoted to helping you. I love helping! :)\n. I can help you \n 1. Book an appointment(include 'appointment' in the comand, appointments, are by the hour, so no 7:30, only 7.) \n 2. Bring you information about the doctors "
+intro= "I am a chatbot. My name is Dr. Princessa, and I am devoted to helping you. I love helping! :)\n. I can help you \n 1. Book an appointment(include 'appointment' in the comand, appointments, are by the hour, so no 7:30, only 7.) \n 2. Bring you information about the doctors (type 2) \n 3. Suggest a doctor if you are facing any kind of symptoms. If this is an emergency, call 911!!!. Type 'exit' to stop talking with me :(( "
+
+def random_response():
+    responses= [
+        "I'm sorry, can you repeat that in a differnt way?",
+        "Pardon me? What?",
+        "I'm confused. Stop making me confused. Please repeat in a clear and concise manner.",
+        "Excuse me? "
+    ]
+    return random.choice(responses)
+
+
+def respond(user_response):
+    user_response=user_response.lower()
+    if "appointment" in user_response:
+        for doctor in doctors:
+            if doctor.name.lower()[4: ] in user_response:
+                for i in user_response.split():
+                    if ast.literal_eval(i) in doctor.times:
+                        print("Good job! You booked an appointment with "+doctor.name+ "at "+i+". ")
+                        return
+                    print(doctor.name+" is available " + str(doctor.times[0]) + " to " + doctor.times[7]+ ". Please pick a time when "+ doctor.name +" is available" )
+                    return 
+                if "cardiologist" in user_response:
+                    print("Our cardiologists are:" )
+                    for c in Cardiolgist:
+                        print(c.name, "available times: ", str(c.times[0]) + " to " + c.times[7])
+                    return
+                elif "pediatrician" in user_response:
+                    print("Our pediatricians are:" )
+                    for p in Pediatricians:
+                        print(p.name, "available times: ", str(p.times[0]) + " to " + p.times[7])
+                    return
+                elif "primary" in user_response:
+                    print("Our Primary Care Physicians are:" )
+                    for p in Pcp:
+                        print(p.name, "available times: ", str(p.times[0]) + " to " + p.times[7])
+                    return
+                else:
+                    print("Please pick a doctor, or type of doctor SUCH AS: Cardiologist, Pediatrician, or Primary care")
+
+    elif "child" in user_response or "son" in user_response or "daughter" in user_response or "kid" in user_response or "baby" in user_response:
+        print("I recommend that you see one of our wonderful pediatricians! Here is their info!!")
+        for p in Pediatricians:
+            print(p.name, "available times: ", str(p.times[0]) + " to " + p.times[7])
+            return
+    elif "chest" in user_response or "dizzy" in user_response or "heart" in user_response:
+         print("That sounds serious! You should see one of our cardiologists. Here is their info ")
+         for c in Cardiolgist:
+            print(c.name, "available times: ", str(c.times[0]) + " to " + c.times[7])
+            return
+    elif "sick" in user_response or "illness" in user_response or "ill" in user_response or "illnesses" in user_response or "hurt" in user_response or "hurts" in user_response or "ache" in user_response or "aches" in user_response:
+         print("See a general primary care physician!!! Here is their info!!")
+         for p in Pcp:
+            print(p.name, "available times: ", str(p.times[0]) + " to " + p.times[7])
+            return
+    elif "info" in user_response or "what" in user_response or "type" in user_response or "doctors" in user_response or "help" in user_response:
+        print("Our pediatricians are: ")
+        for p in Pediatricians:
+            print(p.name, "available times: ", str(p.times[0]) + " to " + p.times[7])
+        print("Our cardiologists are: ")
+        for p in Cardiolgist:
+            print(p.name, "available times: ", str(p.times[0]) + " to " + p.times[7])
+        print("Our Primary Care Physicians are: ")
+        for p in Pcp:
+            print(p.name, "available times: ", str(p.times[0]) + " to " + p.times[7])
+        return 
+    else:
+        for p in doctors:
+            if p.name in user_response:
+                print(p.name, "is available from ", str(p.times[0]) + " to " + p.times[7])
+                return 
+            print(random_response())
+            return
+        
+print(intro)
+user_response=input()
+while user_response.lower() != "exit":
+    respond(user_response)
+    user_response=input()
