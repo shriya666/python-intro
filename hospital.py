@@ -12,15 +12,15 @@ class Doctor:
             else:
                 self.times.append(start+i)
 
-Susan= Doctor("Dr. Susan", "Primary Care Physician",7 )
-Susana= Doctor("Dr. Susana", "Primary Care Physician",7 )
-Kevin= Doctor("Dr. Kevin","Pediatrician", 12 )
-Kyla= Doctor("Dr. Kyla", "Cardiologists", 9)
-Kayla= Doctor("Dr. Kayla", "Cardiologists", 10)
-Kevina= Doctor("Dr. Kevina","Pediatrician", 1)
-Kyle= Doctor("Dr. Kyle", "Pediatrician", 5)
-Georgina= Doctor("Dr. Georgina", "Pediatrician", 8)
-George= Doctor("Dr. George", "Primary care Physician", 11)
+Susan= Doctor("Susan", "Primary Care Physician",7 )
+Susana= Doctor("Susana", "Primary Care Physician",7 )
+Kevin= Doctor("Kevin","Pediatrician", 12 )
+Kyla= Doctor("Kyla", "Cardiologists", 9)
+Kayla= Doctor("Kayla", "Cardiologists", 10)
+Kevina= Doctor("Kevina","Pediatrician", 1)
+Kyle= Doctor("Kyle", "Pediatrician", 5)
+Georgina= Doctor("Georgina", "Pediatrician", 8)
+George= Doctor("George", "Primary care Physician", 11)
 
 
 Pediatricians= [Georgina, Kevina, Kyle, Kevin ]
@@ -44,19 +44,27 @@ def random_response():
 def respond(user_response):
     user_response=user_response.lower()
     if "appointment" in user_response:
-        for doctor in doctors:
-            if doctor.name.lower()[4: ] in user_response:
-                for i in user_response.split():
-                    if ast.literal_eval(i) in doctor.times:
-                        print("Good job! You booked an appointment with "+doctor.name+ "at "+i+". ")
-                        return
-                    print(doctor.name+" is available " + str(doctor.times[0]) + " to " + doctor.times[7]+ ". Please pick a time when "+ doctor.name +" is available" )
+        print("Type doctor ")
+        for i in range(len(doctors)):
+
+            if doctors[i].name.lower() in user_response.lower():
+                print("aa")
+                for j in user_response.split():
+                    print(user_response.split())
+                    # if ast.literal_eval(i) in doctors[i].times:
+                    #     print("Good job! You booked an appointment with "+doctors[i].name+ "at "+i+". ")
+                    #     return
+                    print(i)
+                    print(doctors[i].name)
+                    print(str(doctors[i].times[0]))
+                    print(doctors[i].name+" is available " + str(doctors[i].times[0]) + " to " + str(doctors[i].times[7])+ ". Please pick a time when "+ doctors[i].name +" is available" )
                     return 
             elif "cardiologist" in user_response:
                 print("Our cardiologists are:" )
                 print(Cardiolgist)
                 for c in Cardiolgist:
                     print(c.name, "available times: ", str(c.times[0]) + " to " + str(c.times[7]))
+
                 return
             elif "pediatrician" in user_response:
                 print("Our pediatricians are:" )
@@ -68,9 +76,9 @@ def respond(user_response):
                 for p in Pcp:
                     print(p.name, "available times: ", str(p.times[0]) + " to " + str(p.times[7]))
                 return
-            else:
-                print("Please pick a doctor, or type of doctor SUCH AS: Cardiologist, Pediatrician, or Primary care")
-                return 
+            # else:
+            #     print("Please pick a doctor, or type of doctor SUCH AS: Cardiologist, Pediatrician, or Primary care")
+        return 
 
     elif "child" in user_response or "son" in user_response or "daughter" in user_response or "kid" in user_response or "baby" in user_response or "pediatrician" in user_response:
         print("I recommend that you see one of our wonderful pediatricians! Here is their info!!")
@@ -121,8 +129,9 @@ def respond(user_response):
         for p in doctors:
             if p.name in user_response:
                 print(p.name, "is available from ", str(p.times[0]) + " to " + str(p.times[7]))
-                return 
+                return
             print(random_response())
+            return
         return
 
         
@@ -130,4 +139,5 @@ print(intro)
 user_response=input()
 while user_response.lower() != "exit":
     respond(user_response)
-    user_response=input()
+    user_response+=" "+input()
+    print(user_response)
