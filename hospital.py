@@ -11,6 +11,7 @@ class Doctor:
                 self.times.append(start+i-12)
             else:
                 self.times.append(start+i)
+        
 
 Susan= Doctor("Susan", "Primary Care Physician",7 )
 Susana= Doctor("Susana", "Primary Care Physician",7 )
@@ -22,6 +23,7 @@ Kyle= Doctor("Kyle", "Pediatrician", 5)
 Georgina= Doctor("Georgina", "Pediatrician", 8)
 George= Doctor("George", "Primary care Physician", 11)
 
+print(Kayla.times)
 
 Pediatricians= [Georgina, Kevina, Kyle, Kevin ]
 Cardiolgist= [Kyla, Kayla]
@@ -44,7 +46,7 @@ def random_response():
 def respond(user_response):
     user_response=user_response.lower()
     if "appointment" in user_response:
-        print("Type doctor ")
+        print("Type the type of doctor ")
         for i in range(len(doctors)):
 
             if doctors[i].name.lower() in user_response.lower():
@@ -61,20 +63,150 @@ def respond(user_response):
                     return 
             elif "cardiologist" in user_response:
                 print("Our cardiologists are:" )
-                print(Cardiolgist)
+                #print(Cardiolgist)
                 for c in Cardiolgist:
-                    print(c.name, "available times: ", str(c.times[0]) + " to " + str(c.times[7]))
+                    print(c.name, "available times: ", str(c.times[0]) + " to " + str(c.times[len(c.times)-1]))
+                pickdoctor=input("Type which doctor you want ")
+                pickdoctor=pickdoctor.lower()
+                if "kyla" in pickdoctor:
+                    picktime= input("Pick a time ")
+                    if "9" or "10" or "11" or "12" or "1" or "2" or "3" or "4" in picktime:
+                        picktime1=int(picktime)
+                        if picktime1 in Kyla.times:
+                            for i in Kyla.times:
+                                if i==picktime1:
+                                    Kyla.times.remove(i)
+                                    print(Kyla.times)
+                                    print("Appointment booked. Type exit to exit. ")
+
+                        else:
+                                print("Appointment already booked. Try again. Click enter. ")
+                                return 
+                elif "kayla" in pickdoctor:
+                        picktime= input("Pick a time ")
+                        if "10" or "11" or "12" or "1" or "2" or "3" or "4" or "5" in picktime:
+                            picktime1=int(picktime)
+                            if picktime1 in Kayla.times:
+                                for i in Kayla.times:
+                                    if i==picktime1:
+                                        Kayla.times.remove(i)
+                                        print(Kayla.times)
+                                        print("Appointment booked. Type exit to exit. ")
+
+                            else:
+                                print("Appointment already booked. Try again. Click enter. ")
+                                return 
 
                 return
             elif "pediatrician" in user_response:
                 print("Our pediatricians are:" )
                 for p in Pediatricians:
-                    print(p.name, "available times: ", str(p.times[0]) + " to " + str(p.times[7]))
+                    print(p.name, "available times: ", str(p.times[0]) + " to " + str(p.times[len(p.times)-1]))
+                pickdoctor=input("Type which doctor you want ")
+                pickdoctor=pickdoctor.lower()
+                if "georgina" in pickdoctor:
+                    picktime= input("Pick a time ")
+                    if "8" or "9" or "10" or "11" or "12" or "1" or "2" or "3" in picktime:
+                        picktime1=int(picktime)
+                        if picktime1 in Georgina.times:
+                            for i in Georgina.times:
+                                if i==picktime1:
+                                    Georgina.times.remove(i)
+                                    print(Georgina.times)
+                                    print("Appointment booked. Type exit to exit. ")
+
+                        else:
+                                print("Appointment already booked. Try again. Click enter. ")
+                                return 
+                elif "kevina" in pickdoctor:
+                        picktime= input("Pick a time ")
+                        if "1" or "2" or "3" or "4" or "5" or "6" or "7" or "8" in picktime:
+                            picktime1=int(picktime)
+                            if picktime1 in Kevina.times:
+                                for i in Kevina.times:
+                                    if i==picktime1:
+                                        Kevina.times.remove(i)
+                                        print(Kevina.times)
+                                        print("Appointment booked. Type exit to exit. ")
+                            else:
+                                print("Appointment already booked. Try again. Click enter. ")
+                                return
+                elif "kyle" in pickdoctor:
+                        picktime= input("Pick a time ")
+                        if "5" or "6" or "7" or "8" or "9" or "10" or "11" or "12" in picktime:
+                            picktime1=int(picktime)
+                            if picktime1 in Kyle.times:
+                                for i in Kyle.times:
+                                    if i==picktime1:
+                                        Kyle.times.remove(i)
+                                        print(Kyla.times)
+                                        print("Appointment booked. Type exit to exit. ")
+                            else:
+                                print("Appointment already booked. Try again. Click enter. ")
+                                return
+                elif "kevin" in pickdoctor:
+                        picktime= input("Pick a time ")
+                        if "12" or "1" or "2" or "3" or "4" or "5" or "6" or "7" in picktime:
+                            picktime1=int(picktime)
+                            if picktime1 in Kevin.times:
+                                for i in Kevin.times:
+                                    if i==picktime1:
+                                        Kevin.times.remove(i)
+                                        print(Kevin.times)
+                                        print("Appointment booked. Type exit to exit. ")
+                            else:
+                                print("Appointment already booked. Try again. Click enter. ")
+                                return
+                
                 return
             elif "primary" in user_response:
                 print("Our Primary Care Physicians are:" )
                 for p in Pcp:
-                    print(p.name, "available times: ", str(p.times[0]) + " to " + str(p.times[7]))
+                    print(p.name, "available times: ", str(p.times[0]) + " to " + str(p.times[len(p.times)-1]))
+                pickdoctor=input("Type which doctor you want ")
+                pickdoctor=pickdoctor.lower()
+                if "george" in pickdoctor:
+                    picktime= input("Pick a time ")
+                    if "11" or "12" or "1" or "2" or "3" or "4" or "5" or "6" in picktime:
+                        picktime1=int(picktime)
+                        if picktime1 in George.times:
+                            for i in George.times:
+                                if i==picktime1:
+                                    George.times.remove(i)
+                                    print(George.times)
+                                    print("Appointment booked. Type exit to exit. ")
+
+                        else:
+                                print("Appointment already booked. Try again. Click enter. ")
+                                return 
+                elif "susan" in pickdoctor:
+                        picktime= input("Pick a time ")
+                        if "7" or "8" or "9" or "10" or "11" or "12" or "1" or "2" in picktime:
+                            picktime1=int(picktime)
+                            if picktime1 in Susan.times:
+                                for i in Susan.times:
+                                    if i==picktime1:
+                                        Susan.times.remove(i)
+                                        print(Susan.times)
+                                        print("Appointment booked. Type exit to exit. ")
+
+                            else:
+                                print("Appointment already booked. Try again. Click enter. ")
+                                return 
+                elif "susana" in pickdoctor:
+                        picktime= input("Pick a time ")
+                        if "7" or "8" or "9" or "10" or "11" or "12" or "1" or "2" in picktime:
+                            picktime1=int(picktime)
+                            if picktime1 in Susana.times:
+                                for i in Susana.times:
+                                    if i==picktime1:
+                                        Susana.times.remove(i)
+                                        print(Susana.times)
+                                        print("Appointment booked. Type exit to exit. ")
+
+                            else:
+                                print("Appointment already booked. Try again. Click enter. ")
+                                return
                 return
             # else:
             #     print("Please pick a doctor, or type of doctor SUCH AS: Cardiologist, Pediatrician, or Primary care")
@@ -84,16 +216,145 @@ def respond(user_response):
         print("I recommend that you see one of our wonderful pediatricians! Here is their info!!")
         for p in Pediatricians:
             print(p.name, "available times: ", str(p.times[0]) + " to " + str(p.times[7]))
+        pickdoctor=input("Type which doctor you want ")
+        pickdoctor=pickdoctor.lower()
+        if "georgina" in pickdoctor:
+            picktime= input("Pick a time ")
+            if "8" or "9" or "10" or "11" or "12" or "1" or "2" or "3" in picktime:
+                picktime1=int(picktime)
+                if picktime1 in Georgina.times:
+                    for i in Georgina.times:
+                        if i==picktime1:
+                            Georgina.times.remove(i)
+                            print(Georgina.times)
+                            print("Appointment booked. Type exit to exit. ")
+
+                else:
+                        print("Appointment already booked. Try again. Click enter. ")
+                        return 
+        elif "kevina" in pickdoctor:
+                picktime= input("Pick a time ")
+                if "1" or "2" or "3" or "4" or "5" or "6" or "7" or "8" in picktime:
+                    picktime1=int(picktime)
+                    if picktime1 in Kevina.times:
+                        for i in Kevina.times:
+                            if i==picktime1:
+                                Kevina.times.remove(i)
+                                print(Kevina.times)
+                                print("Appointment booked. Type exit to exit. ")
+                    else:
+                        print("Appointment already booked. Try again. Click enter. ")
+                        return
+        elif "kyle" in pickdoctor:
+                picktime= input("Pick a time ")
+                if "5" or "6" or "7" or "8" or "9" or "10" or "11" or "12" in picktime:
+                    picktime1=int(picktime)
+                    if picktime1 in Kyle.times:
+                        for i in Kyle.times:
+                            if i==picktime1:
+                                Kyle.times.remove(i)
+                                print(Kyla.times)
+                                print("Appointment booked. Type exit to exit. ")
+                    else:
+                        print("Appointment already booked. Try again. Click enter. ")
+                        return
+        elif "kevin" in pickdoctor:
+                picktime= input("Pick a time ")
+                if "12" or "1" or "2" or "3" or "4" or "5" or "6" or "7" in picktime:
+                    picktime1=int(picktime)
+                    if picktime1 in Kevin.times:
+                        for i in Kevin.times:
+                            if i==picktime1:
+                                Kevin.times.remove(i)
+                                print(Kevin.times)
+                                print("Appointment booked. Type exit to exit. ")
+                    else:
+                        print("Appointment already booked. Try again. Click enter. ")
+                        return
         return
     elif "chest" in user_response or "dizzy" in user_response or "heart" in user_response or "cardiologist" in user_response:
         print("That sounds serious! You should see one of our cardiologists. Here is their info ")
         for c in Cardiolgist:
             print(c.name, "available times: ", str(c.times[0]) + " to " + str(c.times[7]))
+        pickdoctor=input("Type which doctor you want ")
+            pickdoctor=pickdoctor.lower()
+            if "kyla" in pickdoctor:
+                picktime= input("Pick a time ")
+                if "9" or "10" or "11" or "12" or "1" or "2" or "3" or "4" in picktime:
+                    picktime1=int(picktime)
+                    if picktime1 in Kyla.times:
+                        for i in Kyla.times:
+                            if i==picktime1:
+                                Kyla.times.remove(i)
+                                print(Kyla.times)
+                                print("Appointment booked. Type exit to exit. ")
+
+                    else:
+                            print("Appointment already booked. Try again. Click enter. ")
+                            return 
+            elif "kayla" in pickdoctor:
+                    picktime= input("Pick a time ")
+                    if "10" or "11" or "12" or "1" or "2" or "3" or "4" or "5" in picktime:
+                        picktime1=int(picktime)
+                        if picktime1 in Kayla.times:
+                            for i in Kayla.times:
+                                if i==picktime1:
+                                    Kayla.times.remove(i)
+                                    print(Kayla.times)
+                                    print("Appointment booked. Type exit to exit. ")
+
+                        else:
+                            print("Appointment already booked. Try again. Click enter. ")
+                            return
         return
     elif "sick" in user_response or "illness" in user_response or "ill" in user_response or "illnesses" in user_response or "hurt" in user_response or "hurts" in user_response or "ache" in user_response or "aches" in user_response or "Primary Care Physician" in user_response or "Primary Care" in user_response:
         print("See a general primary care physician!!! Here is their info!!")
         for p in Pcp:
             print(p.name, "available times: ", str(p.times[0]) + " to " + str(p.times[7]))
+        pickdoctor=input("Type which doctor you want ")
+        pickdoctor=pickdoctor.lower()
+        if "george" in pickdoctor:
+            picktime= input("Pick a time ")
+            if "11" or "12" or "1" or "2" or "3" or "4" or "5" or "6" in picktime:
+                picktime1=int(picktime)
+                if picktime1 in George.times:
+                    for i in George.times:
+                        if i==picktime1:
+                            George.times.remove(i)
+                            print(George.times)
+                            print("Appointment booked. Type exit to exit. ")
+
+                else:
+                        print("Appointment already booked. Try again. Click enter. ")
+                        return 
+        elif "susan" in pickdoctor:
+                picktime= input("Pick a time ")
+                if "7" or "8" or "9" or "10" or "11" or "12" or "1" or "2" in picktime:
+                    picktime1=int(picktime)
+                    if picktime1 in Susan.times:
+                        for i in Susan.times:
+                            if i==picktime1:
+                                Susan.times.remove(i)
+                                print(Susan.times)
+                                print("Appointment booked. Type exit to exit. ")
+
+                    else:
+                        print("Appointment already booked. Try again. Click enter. ")
+                        return 
+        elif "susana" in pickdoctor:
+                picktime= input("Pick a time ")
+                if "7" or "8" or "9" or "10" or "11" or "12" or "1" or "2" in picktime:
+                    picktime1=int(picktime)
+                    if picktime1 in Susana.times:
+                        for i in Susana.times:
+                            if i==picktime1:
+                                Susana.times.remove(i)
+                                print(Susana.times)
+                                print("Appointment booked. Type exit to exit. ")
+
+                    else:
+                        print("Appointment already booked. Try again. Click enter. ")
+                        return   
         return
     elif "info" in user_response or "what" in user_response or "type" in user_response or "doctors" in user_response or "help" in user_response:
         print("Our pediatricians are: ")
