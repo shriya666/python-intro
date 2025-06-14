@@ -33,3 +33,13 @@ while True:
         d=d.lower()
         if d== "a":
             base_budget += decisions["Build Park"] [0]
+        elif d=="b":
+            base_budget += decisions["Better a School"]
+        elif d== "c":
+            base_budget += decisions["Build a Factory"]
+        elif d=="d":
+            base_budget += decisions["Raise Taxes"]
+        elif d=="e":
+            base_budget += decisions["Lower Taxes"]
+        elif d=="f":
+            
