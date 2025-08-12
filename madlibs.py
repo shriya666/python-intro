@@ -1,7 +1,36 @@
-stringggg= "hello"
 
-array= stringggg[1: ]
+firstAdjective= input("Adjective ")
+firstVerb= input("Verb ")
+firstPlace= input("Place ")
+firstNoun= input("Noun ")
+firstNumber= input("Number ")
+secondNoun= input("Plural Noun ")
+thirdNoun= input("Noun ")
+fourthNoun= input("Noun ")
+secondAdjective= input("Adjective ")
+thirdAdjective= input("Adjective ")
+fifthNoun=input("Noun ")
+sixthNoun= input("Noun ")
+fourthAdjective= input("Adjective ")
+MysticalCreature= input("Mystical Creature ")
+fifthAdjective= input("Adjective ")
+firstPreposition= input("Preposition ")
+Hut= input("Place of residence " )
+sameCreature= input("Same Mystical Creature ")
+secondVerb= input("Verb ")
+thirdVerb= input("Verb ")
+seconpreposition= input("Preposition ")
+item= input("Random item ")
+emotion= input("Emotion ")
+fourthVerb= input("Verb ")
 
-print(array)
-   
-   
+print(f"There once was a {firstAdjective} beluga whale who really wanted to {firstVerb}. In order to follow her dreams, she needed to go to the {firstPlace}.  To prepare for her trip, she packed a {firstNoun}, {firstNumber} {secondNoun}, and a {thirdNoun}. ")
+print(f"She stated off on her {secondAdjective}, journey through the {fourthNoun}. ")
+print(f"On her way, she met a {thirdAdjective} {MysticalCreature} who looked {fourthAdjective} ")
+print(f"The key to her dreams was {firstPreposition} his {Hut}.")
+print(f"{sameCreature} {secondVerb} towards Beluga whale, attempting to stop her, but she saw her chance. She {thirdVerb} {seconpreposition}  and grabbed what she needed. It was a {item} ")
+print(f" {emotion},  Beluga whale {fourthVerb} home and lived happily ever after ")
+
+
+
+ 
