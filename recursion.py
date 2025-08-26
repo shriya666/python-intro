@@ -31,4 +31,4 @@ def addinglist2(list, type):
         answer=list[0]+ addinglist2(list[1:], type) 
     return answer
 
-print(addinglist2([3, 6, 9], int))
+print(addinglist2([3, 5, 7], int))
