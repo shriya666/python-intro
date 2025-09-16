@@ -39,7 +39,7 @@ def you_won(c):
                 print("Yellow won!!!! ")
                 game==False
                 break
-        if row[c]== "🔴":
+        else:
             in_a_row= 0
 def red_won(d):
     in_a_red_column=0
@@ -50,8 +50,62 @@ def red_won(d):
                 print("Red won!!!!!")
                 game==False
                 break
-            if row[d]=="🟡":
-                in_a_red_column=0
+        else:
+            in_a_red_column=0
+
+def horizontal_win(row: int):
+    in_a_yellow_row=0
+    for col in range(5):
+        if board[row][col]=="🟡":
+            in_a_yellow_row+=1
+            if in_a_yellow_row==4:
+                print("Yellow won!!!! ")
+                game==False
+                break
+        else:
+            in_a_yellow_row=0
+
+def horizontal_red_win(row: int):
+    in_a_red_row=0
+    for col in range(5):
+        if board[row][col]=="🔴":
+            in_a_red_row+=1
+            if in_a_red_row==4:
+                print("Red won!!!! ")
+                game==False
+                break
+        else:
+            in_a_red_row=0
+
+def diaganol_yellow_win(row, col):
+    in_a_diaganol=0
+    for col in reversed(range(1, 5, 2)):
+        if board[row][col]=="🟡":
+            in_a_diaganol+=1
+            if row+1<=len(board):
+                if board[row-1][col-1]=="🟡":
+                    in_a_diaganol+=1
+                else:
+                    in_a_diaganol = 0
+            else:
+                break
+def down_yellow_win(row, col):
+    in_a_down_diaganol= 0
+    for col in reversed(range(1, 5, 2)):
+        if board[row][col]=="🟡":
+            in_a_diaganol+=1
+            if row+1<=len(board):
+                if board[row+1][col+1]=="🟡":
+                    in_a_diaganol+=1
+                else:
+                    in_a_diaganol = 0
+            else:
+                break
+
+
+
+        
+
 game= True 
 while game==True: 
     column= int(input ("Which column? 1, 2, 3, 4, or 5? "))
@@ -62,16 +116,23 @@ while game==True:
     for i in board:
         print(i)
     you_won(column-1)
+    horizontal_win(empty_row)
+    diaganol_yellow_win(empty_row, column)
     move= int(input ("Which column? 1, 2, 3, 4, or 5? "))
     r = find_bottom(move-1)
     board[r][move-1]= "🔴"
     for i in board:
         print(i)
     red_won(move-1)
+    horizontal_red_win(r)
+    
 
-def horizontal_win():
-    in_a_yellow_row=0
-    if board[]
+
+            
+
+
+
+
 
 
 
