@@ -3,11 +3,11 @@ import random
 print("You are yellow. The computer is red. ")
 
 board= [
-    [0, 0, 0, 0, 0,],
-    [0, 0, 0, 0, 0,],
-    [0, 0, 0, 0, 0,],
-    [0, 0, 0, 0, 0,],
-    [0, 0, 0, 0, 0,]
+    ['🟡', 0, 0, 0, 0],
+    ['🔴', '🟡', 0, 0, 0],
+    ['🟡', '🔴', 0, 0, 0],
+    ['🔴', '🔴', '🔴', 0, 0],
+    ['🟡', '🟡', '🟡', '🔴', 0]
 ]
 
 
@@ -79,18 +79,31 @@ def horizontal_red_win(row: int):
 
 def diaganol_some_color_win(row, col, color):
     in_a_diaganol=0
-    for col in reversed(range(1, 5)):
+    for col in (range(col, 5)):
         if board[row][col]==color:
             in_a_diaganol+=1
-        if row+1>=len(board):
-            break
+        else:
+            in_a_diaganol=0
         if in_a_diaganol==4:
             print( "You won!!!!")
-            #     else:
-            #         in_a_diaganol = 0
+            break 
+        if row+1>=len(board):
+            break
         row += 1
-        col += 1
-        print(row, col)
+# def diaganol_another_color_win(row, col, color):
+#     in_a_diaganol=0
+#     for col in (range(col, 5)):
+#         if board[row][col]==color:
+#             in_a_diaganol+=1
+#         else:
+#             in_a_diaganol=0
+#         if in_a_diaganol==4:
+#             print( "You won!!!!")
+#             break 
+#         if row+1>=len(board):
+#             break
+#         row += 1
+        #print(row, col)
 
 # def in_a_different_diaganol(row, col, color):
 #     in_a_diaganol=0
@@ -130,10 +143,16 @@ while game==True:
     board[empty_row][column-1]="🟡"
     for i in board:
         print(i)
-    you_won(column-1)
-    horizontal_win(empty_row)
-    diaganol_some_color_win(empty_row, column, "🟡")
-    diaganol_some_color_win(empty_row, column, "🔴")
+    # you_won(column-1)
+    # horizontal_win(empty_row)
+
+    for row in range(len(board)):
+        for i in range(len(board[row])):
+            if board[row][i]!=0:
+                diaganol_some_color_win(row, i, board[row][i])
+
+        
+    #diaganol_some_color_win(empty_row, column, "🔴")
     # in_a_different_diaganol(empty_row, column, "🟡" )
     # in_a_different_diaganol(empty_row, column, "🔴" )
     move= int(input ("Which column? 1, 2, 3, 4, or 5? "))
@@ -141,8 +160,8 @@ while game==True:
     board[r][move-1]= "🔴"
     for i in board:
         print(i)
-    red_won(move-1)
-    horizontal_red_win(r)
+    # red_won(move-1)
+    # horizontal_red_win(r)
     
 
 
