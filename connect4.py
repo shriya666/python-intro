@@ -3,11 +3,11 @@ import random
 print("You are yellow. The computer is red. ")
 
 board= [
-    ['🟡', 0, 0, 0, 0],
-    ['🔴', '🟡', 0, 0, 0],
-    ['🟡', '🔴', 0, 0, 0],
-    ['🔴', '🔴', '🔴', 0, 0],
-    ['🟡', '🟡', '🟡', '🔴', 0]
+[0, 0, 0, 0, 0],
+[0, 0, "🟡", "🟡", "🟡"],
+[0, 0, "🟡", "🟡", "🔴"],
+[0, 0, "🟡", "🔴", "🔴"], 
+[0, 0, "🔴", "🔴", "🔴"]
 ]
 
 
@@ -77,6 +77,7 @@ def horizontal_red_win(row: int):
         else:
             in_a_red_row=0
 
+#top left -> bottom right
 def diaganol_some_color_win(row, col, color):
     in_a_diaganol=0
     for col in (range(col, 5)):
@@ -90,6 +91,58 @@ def diaganol_some_color_win(row, col, color):
         if row+1>=len(board):
             break
         row += 1
+
+#bottom left -> top right
+def diaganol_another_way_win(row, col, color):
+    
+    in_a_diaganol=0
+    for col in (range(col, 5)):
+        if board[row][col]==color:
+            in_a_diaganol+=1
+        else:
+            in_a_diaganol=0
+        if in_a_diaganol==4:
+            print( "You won!!!!")
+            break 
+        if row - 1 < 0:
+            break
+        row -= 1
+
+#bottom right to top left
+def diaganol_different_way_win(row, col, color):
+    if col < 3:
+        return
+    in_a_diaganol=0
+    for col in reversed(range(0, col+1)):
+        if board[row][col]==color:
+            in_a_diaganol+=1
+        else:
+            in_a_diaganol=0
+        if in_a_diaganol==4:
+            print( "You won!!!!")
+            break 
+        if row - 1 < 0:
+            break
+        row -= 1
+#top left to bottom right
+def diaganol_last_way_win(row, col, color):
+    if col < 3:
+        return
+    in_a_diaganol=0
+    for col in reversed(range(0, col+1)):
+        if board[row][col]==color:
+            in_a_diaganol+=1
+        else:
+            in_a_diaganol=0
+        if in_a_diaganol==4:
+            print( "You won!!!!")
+            break 
+        if row +1>=len(board):
+            break
+        row += 1
+
+
+
 # def diaganol_another_color_win(row, col, color):
 #     in_a_diaganol=0
 #     for col in (range(col, 5)):
@@ -130,10 +183,6 @@ def down_yellow_win(row, col):
             else:
                 break
 
-
-
-        
-
 game= True 
 while game==True: 
     column= int(input ("Which column? 1, 2, 3, 4, or 5? "))
@@ -143,13 +192,17 @@ while game==True:
     board[empty_row][column-1]="🟡"
     for i in board:
         print(i)
-    # you_won(column-1)
+    
+                # you_won(column-1)
     # horizontal_win(empty_row)
 
     for row in range(len(board)):
         for i in range(len(board[row])):
             if board[row][i]!=0:
-                diaganol_some_color_win(row, i, board[row][i])
+                # diaganol_some_color_win(row, i, board[row][i])
+                #diaganol_another_way_win(row, i, board[row][i])
+                #diaganol_different_way_win(row, i, board[row][i])
+                diaganol_last_way_win(row, i, board[row][i])
 
         
     #diaganol_some_color_win(empty_row, column, "🔴")
@@ -160,6 +213,9 @@ while game==True:
     board[r][move-1]= "🔴"
     for i in board:
         print(i)
+    
+        
+        
     # red_won(move-1)
     # horizontal_red_win(r)
     
