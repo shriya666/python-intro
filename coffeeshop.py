@@ -8,6 +8,7 @@ Menu={
     "Milk Tea": 3.50,
     "Frappe": 4,
     "Croissant": 4,
+    "Matcha": 5,
     "Eclair": 2,
     "Baguette": 5,
     "Macarons": 10,
@@ -23,7 +24,7 @@ total_price=0
 reciept={
 
 }
-order=input("Order Here or Type 'exit' to exit ")
+order=input("Order Here or Type 'exit' to exit ").title()
 
 while order!="exit":
     num=int(input("How many of this item? "))
